@@ -1,0 +1,37 @@
+    <main>
+        <section class="actions">
+            <form action="/refill" method="POST">
+                <h2>Salary time? Refill your account amount.</h2>
+                <input type="text" id="refill-amount" name="refill">
+                <button type="submit">Refill</button>
+            </form>
+            <div>
+                <h2>New expense comming up?</h2>
+                <a href="/expenses/create">Add it now</a>
+            </div>
+        </section>
+        <hr class="separator">
+
+        <table class="expenses">
+            <thead>
+                 {{#if userExpenses}}
+                <tr>
+                    <th>Merchant</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                </tr>
+                {{else}}
+                {{/if}}
+            </thead>
+            <tbody>
+            {{#each userExpenses}}
+            <div>{{>expenses}}</div>
+            {{/each}}
+            </tbody>
+        </table>
+        {{#if userExpenses}}
+        {{else}}
+		<h1 class="no-expenses">No expenses founded so far.. <span>GOOD JOB!</span></h1>
+        {{/if}}
+    </main>
